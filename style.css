@@ -1,0 +1,48 @@
+body {
+    margin : 0;
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    background-color: white;
+    /* vh 는 view height = 보는 높이만큼 */
+    min-height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.task-area{
+    border: 1px solid lightgray;
+    margin-top: 2em;
+}
+
+.task-tabs{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    position: relative;
+}
+
+.task-tabs div{
+    padding: 1em;
+}
+
+#underline {
+    height : 4px;
+    background-color: pink;
+    position: absolute;
+    width : 80px;
+    left: 0px;
+    top: 52px;
+    padding : 0px;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.task-done{
+    text-decoration: line-through;
+}

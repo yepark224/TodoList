@@ -18,24 +18,30 @@ let mode = 'all';
 let filterList = [];
 let underLine = document.getElementById("tab-underline");
 
-console.log(tabs);
-
-
+//이벤트
 addButton.addEventListener("click",addTask);
 for (let i =1;i < tabs.length; i++){
     tabs[i].addEventListener("click",function(event){
         filter(event);
     });
 }
+taskInput.addEventListener("keydown", function (event) {
+    if (event.key === 'Enter') {
+      addTask(event);
+    }
+  });
 
+
+  //함수
 function addTask(){
+    if (taskInput.value === "") { return alert("할일을 입력하세요");}
     let task = {
         id: randomIDGenerate() ,
         taskContent: taskInput.value,
         isComplete: false
     }
     taskList.push(task);
-    console.log(taskList);
+    taskInput.value = "";
     render(); 
 }
 

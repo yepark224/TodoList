@@ -92,8 +92,8 @@ function toggleComplete(id){
             break;
         }
     }
-    render();
-    console.log(taskList);
+    // render();
+    filter();
 }
 
 function randomIDGenerate(){
@@ -107,7 +107,10 @@ function deleteTask(id){
             break;
         }
     }
-    render();
+    //왜 render 가 아니고 filter를 해야 다른 탭에서 지워도 잘 작동할까
+    //왜냐하면 delete 가 tasklist 에서만 지우는거거든. render()하게되면 지워지지않은 Filterlist 가 나옴.
+    // render();
+    filter();
 }
 
 function filter(e){
@@ -132,7 +135,7 @@ function filter(e){
             }
         }
     render();    
-    console.log("진행중",filterList);
+    
     }else if (mode === "done") {
         for (let i = 0; i <taskList.length; i++){
             if (taskList[i].isComplete === true){

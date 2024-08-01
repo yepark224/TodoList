@@ -35,10 +35,10 @@ function render(){
 
         resultHTML += 
         `<div class = "task">
-            <div class = task-done>${taskList[i].taskContent}</div>
+            <div class = "task-done">${taskList[i].taskContent}</div>
             <div>
                 <button onclick = "toggleComplete('${taskList[i].id}')">Check</button>
-                <button onclick = "deleteTask()">Delete</button>
+                <button onclick = "deleteTask('${taskList[i].id}')">Delete</button>
             </div>
         </div>`
         
@@ -49,18 +49,18 @@ function render(){
             <div>${taskList[i].taskContent}</div>
             <div>
                 <button onclick = "toggleComplete('${taskList[i].id}')">Check</button>
-                <button onclick = "deleteTask()">Delete</button>
+                <button onclick = "deleteTask('${taskList[i].id}')">Delete</button>
             </div>
         </div>`;
+        }
+   
     }
-
     document.getElementById("task-board").innerHTML = resultHTML;
-    }
 }
 
 function toggleComplete(id){
     
-    for(let i=0; i < taskList.length; i++){
+    for( let i=0; i < taskList.length; i++){
         if(taskList[i].id == id){
             // ! 반댓값을 넣어준다.
             taskList[i].isComplete = !taskList[i].isComplete;
@@ -75,6 +75,12 @@ function randomIDGenerate(){
     return '_' + Math.random().toString(36).substring(2,9);
 }
 
-function deleteTask(){
-    console.log("삭제")
+function deleteTask(id){
+    for(let i=0; i<taskList.length;i++){
+        if(taskList[i].id == id){
+            taskList.splice(i,1)
+            break;
+        }
+    }
+    render();
 }

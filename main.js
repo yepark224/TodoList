@@ -16,7 +16,9 @@ let taskList = []
 let tabs = document.querySelectorAll(".task-tabs div");
 let mode = 'all';
 let filterList = [];
+let underLine = document.getElementById("tab-underline");
 
+console.log(tabs);
 
 
 addButton.addEventListener("click",addTask);
@@ -102,8 +104,18 @@ function deleteTask(id){
     render();
 }
 
-function filter(event){
-    mode = event.target.id;
+function filter(e){
+    // 함수가 이벤트 핸들러로 호출된 경우
+    if (e) {
+        // 모드 설정
+        mode = e.target.id;
+        //밑줄조정
+        underLine.style.width = e.target.offsetWidth + "px";
+        underLine.style.left = e.target.offsetLeft + "px";
+        underLine.style.top =
+          e.target.offsetTop + (e.target.offsetHeight - 4) + "px";
+      } 
+
     filterList = []
     if (mode === "all"){
         render();
